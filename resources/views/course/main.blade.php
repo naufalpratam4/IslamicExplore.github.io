@@ -1,4 +1,4 @@
-@extends('layouts.coursepage')
+@extends('layouts.landingpage')
 @section('content')
     @include('template.navbarUser')
     @include('course.hero')

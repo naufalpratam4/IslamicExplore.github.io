@@ -36,7 +36,7 @@
             </li>
             <li>
                 <a href="/admin/contact"
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-800 hover:text-white dark:hover:bg-gray-700 group {{ implode(' ', Request::is('admin/contact', 'admin/materi/tambah-materi') ? ['bg-green-500', 'text-white'] : []) }}">
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-800 hover:text-white dark:hover:bg-gray-700 group {{ implode(' ', Request::is('admin/contact') ? ['bg-green-500', 'text-white'] : []) }}">
                     <i class="fa-solid fa-envelope"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Contact</span>
 
@@ -47,7 +47,7 @@
                     @csrf
 
                     <a href=""
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-800 hover:text-white dark:hover:bg-gray-700 group {{ implode(' ', Request::is('admin/contact', 'admin/materi/tambah-materi') ? ['bg-green-500', 'text-white'] : []) }}">
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-800 hover:text-white dark:hover:bg-gray-700 group {{ implode(' ', Request::is('') ? ['bg-green-500', 'text-white'] : []) }}">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <button class="" type="submit">
                             <span class="flex-1 ms-3 whitespace-nowrap">Logout</span>
