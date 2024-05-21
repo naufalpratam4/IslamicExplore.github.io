@@ -4,5 +4,5 @@
     @include('course.hero')
     @include('course.learning')
     @include('course.langganan')
-    @include('course.footer')
+    @include('template.footerUser')
 @endsection

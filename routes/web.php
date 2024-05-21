@@ -45,24 +45,31 @@ Route::get('/cs', function () {
 Route::get('/login', function () {
     return view('auth.loginUser');
 });
+route::get('/register', function () {
+    return view('auth.registerUser');
+});
+
+Route::post('/register', [AuthController::class, 'registerUser'])->name('register.user');
 Route::post('/login', [AuthController::class, 'loginUser'])->name('admin.login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard.main');
-});
+Route::middleware(['admin'])->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard.main');
+    });
 
-Route::get('/admin/materi', [MateriController::class, 'materi'])->name('admin.materi');
-Route::get('/admin/materi/detail/{id}', [MateriController::class, 'detailMateri'])->name('admin.detailMateri');
-Route::get('admin/materi/tambah-materi', function () {
-    return view('admin.materi.addMateri');
-});
-Route::post('admin/materi/tambah-materi', [MateriController::class, 'addMateri'])->name('admin.addMateri');
-Route::delete('admin/materi/delete/{id}', [MateriController::class, 'deleteMateri'])->name('admin.delete.materi');
-Route::get('/admin/materi/add-sub-materi/{id}', [MateriController::class, 'viewAddSubMateri'])->name('admin.addSubMateri');
-Route::post('/admin/materi/add-sub-materi/{id}', [MateriController::class, 'addSubMateri'])->name('admin.addSubMateri');
-Route::delete('/admin/materi/delete-sub-materi/{id}', [MateriController::class, 'deleteSubMateri'])->name('admin.delete.submateri');
+    Route::get('/admin/materi', [MateriController::class, 'materi'])->name('admin.materi');
+    Route::get('/admin/materi/detail/{id}', [MateriController::class, 'detailMateri'])->name('admin.detailMateri');
+    Route::get('admin/materi/tambah-materi', function () {
+        return view('admin.materi.addMateri');
+    });
+    Route::post('admin/materi/tambah-materi', [MateriController::class, 'addMateri'])->name('admin.addMateri');
+    Route::delete('admin/materi/delete/{id}', [MateriController::class, 'deleteMateri'])->name('admin.delete.materi');
+    Route::get('/admin/materi/add-sub-materi/{id}', [MateriController::class, 'viewAddSubMateri'])->name('admin.addSubMateri');
+    Route::post('/admin/materi/add-sub-materi/{id}', [MateriController::class, 'addSubMateri'])->name('admin.addSubMateri');
+    Route::delete('/admin/materi/delete-sub-materi/{id}', [MateriController::class, 'deleteSubMateri'])->name('admin.delete.submateri');
 
-Route::get('/admin/contact', [ContactController::class, 'contact']);
-Route::post('/kirim-pesan', [ContactController::class, 'kirimPesan'])->name('kirim.pesan');
-Route::delete('/admin/pesan/delete/{id}', [ContactController::class, 'deletePesan'])->name('delete.pesan');
+    Route::get('/admin/contact', [ContactController::class, 'contact']);
+    Route::post('/kirim-pesan', [ContactController::class, 'kirimPesan'])->name('kirim.pesan');
+    Route::delete('/admin/pesan/delete/{id}', [ContactController::class, 'deletePesan'])->name('delete.pesan');
+});
